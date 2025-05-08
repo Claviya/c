@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+// Base class for student information
+class Student {
+protected:
+    string name;
+    int rollNumber;
+public:
+    void setData(string n, int roll) {
+        name = n;
+        rollNumber = roll;
+    }
+    void displayData() {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+    }
+};
+
+// Class for sports information
+class Sports {
+protected:
+    string sportName;
+    int hoursPlayed;
+public:
+    void setSportsInfo(string s, int hours) {
+        sportName = s;
+        hoursPlayed = hours;
+    }
+    void displaySportsInfo() {
+        cout << "Sport: " << sportName << endl;
+        cout << "Hours Played: " << hoursPlayed << endl;
+    }
+};
+
+// Derived class inheriting from both Student and Sports
+class StudentSports : public Student, public Sports {
+public:
+    void displayAllInfo() {
+        cout << "Student Information:" << endl;
+        displayData();
+        cout << endl << "Sports Information:" << endl;
+        displaySportsInfo();
+    }
+};
+
+int main() {
+    StudentSports student1;
+    student1.setData("John Doe", 101);
+    student1.setSportsInfo("Football", 50);
+    cout << "All Information:" << endl;
+    student1.displayAllInfo();
+    return 0;
+}
